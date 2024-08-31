@@ -14,16 +14,16 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['name' => 'Programming', 'slug' => 'programming'],
-            ['name' => 'Web Development', 'slug' => 'web-development'],
-            ['name' => 'Database', 'slug' => 'database'],
-            ['name' => 'Networking', 'slug' => 'networking'],
-            ['name' => 'Security', 'slug' => 'security'],
-            ['name' => 'Cloud Computing', 'slug' => 'cloud-computing'],
-            ['name' => 'Machine Learning', 'slug' => 'machine-learning'],
-            ['name' => 'DevOps', 'slug' => 'devops'],
-            ['name' => 'Software Engineering', 'slug' => 'software-engineering'],
-            ['name' => 'IT Management', 'slug' => 'it-management'],
+            ['name' => 'Programming', 'slug' => 'programming', 'color' => 'red'],
+            ['name' => 'Web Development', 'slug' => 'web-development', 'color' => 'blue'],
+            ['name' => 'Database', 'slug' => 'database', 'color' => 'green'],
+            ['name' => 'Networking', 'slug' => 'networking', 'color' => 'yellow'],
+            ['name' => 'Security', 'slug' => 'security', 'color' => 'purple'],
+            ['name' => 'Cloud Computing', 'slug' => 'cloud-computing', 'color' => 'teal'],
+            ['name' => 'Machine Learning', 'slug' => 'machine-learning', 'color' => 'orange'],
+            ['name' => 'DevOps', 'slug' => 'devops', 'color' => 'pink'],
+            ['name' => 'Software Engineering', 'slug' => 'software-engineering', 'color' => 'indigo'],
+            ['name' => 'IT Management', 'slug' => 'it-management', 'color' => 'gray'],
         ];
 
         foreach ($categories as $category) {
