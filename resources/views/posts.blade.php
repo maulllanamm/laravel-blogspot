@@ -6,7 +6,9 @@
                 <a href="/posts/{{$post['slug']}}">
                     <h2>{{$post['title']}}</h2>
                 </a>
-                <a href="">{{$post['author']}} | 1 Juli 2024</a>
+                <h2>
+                    By <a href="">{{$post['author']}} | {{ $post->created_at->diffForHumans() }}</a>
+                </h2>
                 <p>{{Str::limit($post['body'], 150)}}</p>
                 <a href="/posts/{{$post['slug']}}">Read more &raquo;</a>
             </article>
