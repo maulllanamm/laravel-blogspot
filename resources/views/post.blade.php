@@ -3,7 +3,7 @@
     <main>
         <article class="py-8">
             <h2>{{$post['title']}}</h2>
-            <a href="">{{$post['author']}} | {{ $post->created_at->diffForHumans() }}</a>
+            <a href="/authors/{{$post->author->id}}">{{$post->author->name}} | {{ $post->created_at->diffForHumans() }}</a>
             <p>{{$post['body']}}</p>
             <a href="/posts">&laquo; Back to post</a>
         </article>
