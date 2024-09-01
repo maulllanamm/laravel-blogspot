@@ -10,7 +10,7 @@
                             <img class="mr-4 w-16 h-16 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="{{$post->author->name}}">
                             <div class="flex flex-col">
                                 <a href="/authors/{{$post->author->username}}" rel="author" class="text-xl font-bold text-gray-900 dark:text-white hover:underline">{{$post->author->username}}</a>
-                                <a href="/categories/{{$post->category->slug}}">
+                                <a href="/posts?category={{$post->category->slug}}">
                                    <p class="bg-{{$post->category->color}}-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
                                         {{$post->category->name}}
                                    </p>
