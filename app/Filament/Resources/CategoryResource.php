@@ -6,7 +6,12 @@ use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
+use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -23,7 +28,14 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Card::make()->schema([
+                    TextInput::make('name')
+                        ->live(onBlur: true)
+                        ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                        ->required(),
+
+                    TextInput::make('slug')
+                ])
             ]);
     }
 
@@ -31,7 +43,13 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id')
+                    ->sortable(),
+                TextColumn::make('name')
+                    ->limit(50)
+                    ->sortable(),
+                TextColumn::make('slug')
+                    ->limit(50),
             ])
             ->filters([
                 //
