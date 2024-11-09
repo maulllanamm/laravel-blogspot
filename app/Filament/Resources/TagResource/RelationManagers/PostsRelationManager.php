@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Filament\Resources\TagsResource\RelationManagers;
+namespace App\Filament\Resources\TagResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
