@@ -6,12 +6,24 @@ use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
 use Filament\Forms;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class PostResource extends Resource
 {
@@ -23,7 +35,17 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Card::make()->schema([
+                    Select::make('category_id')
+                        ->relationship(name: 'category', titleAttribute: 'name'),
+                    TextInput::make('title')
+                        ->live(onBlur: true)
+                        ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                        ->required(),
+                    TextInput::make('slug'),
+                    RichEditor::make('content'),
+                    Toggle::make('is_published'),
+                ])
             ]);
     }
 
@@ -31,7 +53,15 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id')
+                    ->sortable(),
+                TextColumn::make('title')
+                    ->limit(50)
+                    ->sortable(),
+                TextColumn::make('slug')
+                    ->limit(50),
+                IconColumn::make('is_published')
+                    ->boolean(),
             ])
             ->filters([
                 //
