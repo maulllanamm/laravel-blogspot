@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\CategoryResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -28,7 +29,7 @@ class PostsRelationManager extends RelationManager
         return $form
             ->schema([
                 Card::make()->schema([
-                    Select::make('category_id')
+                    BelongsToSelect::make('category_id')
                         ->relationship(name: 'category', titleAttribute: 'name'),
                     TextInput::make('title')
                         ->live(onBlur: true)
