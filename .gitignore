@@ -20,3 +20,13 @@ yarn-error.log
 /.idea
 /.vscode
 /.zed
+
+
+# Filament Cache and Configuration
+/storage/filament
+/storage/framework/cache
+/storage/framework/sessions
+/storage/filament-panels
+
+# Filament logs or temporary backups
+/storage/filament-backups
