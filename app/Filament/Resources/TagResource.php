@@ -49,6 +49,7 @@ class TagResource extends Resource
                     ->sortable(),
                 TextColumn::make('name')
                     ->limit(50)
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('slug')
                     ->limit(50),

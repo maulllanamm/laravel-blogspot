@@ -34,7 +34,6 @@ class CategoryResource extends Resource
                         ->live(onBlur: true)
                         ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                         ->required(),
-
                     TextInput::make('slug')
                 ])
             ]);
@@ -48,6 +47,7 @@ class CategoryResource extends Resource
                     ->sortable(),
                 TextColumn::make('name')
                     ->limit(50)
+                    ->searchable( )
                     ->sortable(),
                 TextColumn::make('slug')
                     ->limit(50),

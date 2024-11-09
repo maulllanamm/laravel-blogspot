@@ -23,6 +23,8 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -61,6 +63,7 @@ class PostResource extends Resource
                     ->sortable(),
                 TextColumn::make('title')
                     ->limit(50)
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('slug')
                     ->limit(50),
@@ -68,7 +71,12 @@ class PostResource extends Resource
                     ->boolean(),
             ])
             ->filters([
-                //
+                Filter::make('Published')
+                    ->query(fn (Builder $query): Builder => $query->where('is_published', true)),
+                Filter::make('Unpublished')
+                    ->query(fn (Builder $query): Builder => $query->where('is_published', false)),
+                SelectFilter::make('category')
+                    ->relationship('category', 'name')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
