@@ -49,6 +49,8 @@ class PostResource extends Resource
                         ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                         ->required(),
                     TextInput::make('slug'),
+                    SpatieMediaLibraryFileUpload::make('image')
+                        ->collection('posts'),
                     RichEditor::make('content')
                         ->required(),
                     Toggle::make('is_published'),
@@ -68,6 +70,8 @@ class PostResource extends Resource
                     ->sortable(),
                 TextColumn::make('slug')
                     ->limit(50),
+                SpatieMediaLibraryImageColumn::make('image')
+                    ->collection('posts'),
                 IconColumn::make('is_published')
                     ->boolean(),
             ])
