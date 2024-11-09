@@ -23,4 +23,14 @@ class Post extends Model implements HasMedia
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', true);
+    }
+
+    public function scopeUnpublished($query)
+    {
+        return $query->where('is_published', false);
+    }
 }
