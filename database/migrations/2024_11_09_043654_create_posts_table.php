@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('content');
-            $table->boolean('is_publish')->default(false);
+            $table->boolean('is_published')->default(false);
             $table->timestamps();
         });
     }
